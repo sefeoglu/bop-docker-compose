@@ -12,11 +12,11 @@ services:
       - 8085:8085
       - 5002:5000
     environment:
-      - PIVEAU_HUB_SEARCH_SERVICE={"enabled":true,"url":"localhost","port":8080,"api_key":"yourSearchApiKey"}
+      - PIVEAU_HUB_SEARCH_SERVICE={"enabled":true,"url":"piveau-hub-search","port":8080,"api_key":"yourSearchApiKey"}
       - PIVEAU_HUB_API_KEY=yourRepoApiKey
       - PIVEAU_HUB_SHELL_CONFIG={"http":{},"telnet":{}}
-      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://localhost:8890","clearGeoDataCatalogues":["*"]}
-      - JAVA_OPTS=-Xms1g -Xmx8g
+      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://virtuoso:8890","clearGeoDataCatalogues":["*"]}
+      - JAVA_OPTS=-Xms1g -Xmx2g
 
   piveau-hub-search:
     image: registry.gitlab.com/piveau/hub/piveau-hub-search
@@ -32,7 +32,7 @@ services:
         condition: service_healthy
     environment:
       - PIVEAU_HUB_SEARCH_API_KEY=yourSearchApiKey
-      - PIVEAU_HUB_SEARCH_ES_CONFIG={"host":"localhost","port":9200}
+      - PIVEAU_HUB_SEARCH_ES_CONFIG={"host":"elasticsearch","port":9200}
       - PIVEAU_HUB_SEARCH_GAZETTEER_CONFIG={"url":"http://doesnotmatter.eu"}
       - JAVA_OPTS=-Xms1g -Xmx4g
 
@@ -64,7 +64,7 @@ services:
         soft: -1
         hard: -1
     healthcheck:
-      test: curl -s -f http://localhost:9200/_cat/health >/dev/null || exit 1
+      test: curl -s -f http://elasticsearch:9200/_cat/health >/dev/null || exit 1
       interval: 5s
       timeout: 3s
       retries: 20
@@ -80,7 +80,7 @@ services:
       - elasticsearch-data:/usr/share/elasticsearch/data
 
   virtuoso:
-    image: openlink/virtuoso-opensource-7:7.2.9
+    image:  openlink/virtuoso-opensource-7:7.2.9
     container_name: virtuoso
     logging:
       options:

@@ -1,5 +1,7 @@
 # bop-docker-compose
-BOP project docker compose
+This project consists of docker compose files of the Berlin Open Science platform for researchers under the [Berlin University Alliance](https://www.berlin-university-alliance.de/) project.
+
+The project is based on [piveau](https://www.piveau.de/en/), which is a data management platform for the public sector
 * 1.) Harvesting Data:
   
   - TU Berlin

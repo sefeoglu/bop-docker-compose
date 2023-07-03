@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  piveau-consus-importing-rdf:
+    build: piveau-consus-importing-rdf
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms200m -Xmx500m
+
+  piveau-consus-importing-ckan:
+    build: piveau-consus-importing-ckan
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms100m -Xmx200m
+
+  piveau-consus-transforming-js:
+    build: piveau-consus-transforming-js
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms200m -Xmx500m
+    volumes:
+      - ./scripts:/usr/verticles/scripts
+
+  piveau-consus-exporting-hub:
+    build: piveau-consus-exporting-hub
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms200m -Xmx1g
+      - PIVEAU_HUB_APIKEY=yourRepoApiKey
+
+  piveau-consus-scheduling:
+    build: piveau-consus-scheduling
+    logging:
+      options:
+        max-size: "50m"
+    ports:
+      - '8090:8080'
+      - '8095:8085'
+      - '5000:5000'
+    environment:
+      - JAVA_OPTS=-Xms100m -Xmx200m
+      - PIVEAU_SHELL_CONFIG={"telnet":{},"http":{}}
+    volumes:
+      - ./pipes:/usr/verticles/pipes

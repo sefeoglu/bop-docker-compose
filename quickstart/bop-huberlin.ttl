@@ -1,0 +1,10 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+ 
+<http://piveau.io/id/catalogue/bua-huberlin>
+  a dcat:Catalog ;
+  dct:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+  dct:title "HU Berlin EDOC"@en ;
+  dct:description "bua-huberlin"@en ;
+  dct:type "oaipmh"^^xsd:string .

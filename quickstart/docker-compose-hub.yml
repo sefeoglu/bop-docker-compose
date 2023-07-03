@@ -1,0 +1,103 @@
+version: "3"
+
+services:
+  piveau-hub-repo:
+    image: registry.gitlab.com/piveau/hub/piveau-hub-repo
+    container_name: piveau-hub-repo
+    logging:
+      options:
+        max-size: "100m"
+    ports:
+      - 8082:8080
+      - 8085:8085
+      - 5002:5000
+    environment:
+      - PIVEAU_HUB_SEARCH_SERVICE={"enabled":true,"url":"localhost","port":8080,"api_key":"yourSearchApiKey"}
+      - PIVEAU_HUB_API_KEY=yourRepoApiKey
+      - PIVEAU_HUB_SHELL_CONFIG={"http":{},"telnet":{}}
+      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://localhost:8890","clearGeoDataCatalogues":["*"]}
+      - JAVA_OPTS=-Xms1g -Xmx8g
+
+  piveau-hub-search:
+    image: registry.gitlab.com/piveau/hub/piveau-hub-search
+    container_name: piveau-hub-search
+    logging:
+      options:
+        max-size: "100m"
+    ports:
+      - 8084:8080
+      - 8086:8990
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    environment:
+      - PIVEAU_HUB_SEARCH_API_KEY=yourSearchApiKey
+      - PIVEAU_HUB_SEARCH_ES_CONFIG={"host":"localhost","port":9200}
+      - PIVEAU_HUB_SEARCH_GAZETTEER_CONFIG={"url":"http://doesnotmatter.eu"}
+      - JAVA_OPTS=-Xms1g -Xmx4g
+
+  piveau-hub-ui:
+    image: registry.gitlab.com/piveau/hub/piveau-hub-ui
+    container_name: piveau-hub-ui
+    logging:
+      options:
+        max-size: "100m"
+    ports:
+      - 8080:8080
+    environment:
+      - VUE_APP_TITLE=piveau
+      - VUE_APP_API_BASE_URL=http://localhost:8084/
+      - VUE_APP_API_UPLOAD_BASE_URL=http://localhost:8088/
+      - VUE_APP_KEYCLOAK_ENABLE_LOGIN=false
+      - VUE_APP_KEYCLOAK_REALM=piveau
+      - VUE_APP_KEYCLOAK_URL=https://keycloak-piveau.apps.osc.fokus.fraunhofer.de/auth
+      - VUE_APP_ROUTER_OPTIONS_BASE=/
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.2
+    container_name: elasticsearch
+    logging:
+      options:
+        max-size: "100m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    healthcheck:
+      test: curl -s -f http://localhost:9200/_cat/health >/dev/null || exit 1
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - bootstrap.memory_lock=true
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms2G -Xmx8G
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+
+  virtuoso:
+    image: openlink/virtuoso-opensource-7:7.2.9
+    container_name: virtuoso
+    logging:
+      options:
+        max-size: "100m"
+    ports:
+      - 8890:8890
+      - 1111:1111
+    environment:
+      - DBA_PASSWORD=dba
+      - VIRT_PARAMETERS_NUMBEROFBUFFERS=170000
+      - VIRT_PARAMETERS_MAXDIRTYBUFFERS=130000
+      - VIRT_PARAMETERS_SERVERTHREADS=100
+      - VIRT_HTTPSERVER_SERVERTHREADS=100
+      - VIRT_HTTPSERVER_MAXCLIENTCONNECTIONS=100
+    volumes:
+      - virtuoso-data:/database
+
+volumes:
+  virtuoso-data:
+  elasticsearch-data:

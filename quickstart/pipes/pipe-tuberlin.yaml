@@ -1,0 +1,26 @@
+header:
+  id: f0baa4d5-1099-4c37-b4ca-563b8c683985
+  name: bua-tuberlin
+  title: Harvester - BUA TU Berlin
+  version: "2.0.0"
+  transport: payload
+body:
+  segments:
+    - header:
+        name: piveau-importing-oaipmh
+        segmentNumber: 1
+        title: Importing OAI-PMH
+        processed: false
+      body:
+        config:
+          address: https://api-depositonce.tu-berlin.de/server/oai/request
+          catalogue: bua-tuberlin
+          queries:
+            metadataPrefix: oai_dc
+    - header:
+        name: piveau-consus-exporting-hub
+        segmentNumber: 2
+        title: Exporting hub
+        processed: false
+      body: {}
+ 

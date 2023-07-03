@@ -1,0 +1,65 @@
+version: "3"
+
+services:
+  # piveau-consus-importing-rdf:
+  #   image: registry.gitlab.com/piveau/consus/piveau-consus-importing-rdf
+  #   ports:
+  #     - 18080:8080
+  #   logging:
+  #     options:
+  #       max-size: "50m"
+  #   environment:
+  #     - JAVA_OPTS=-Xms200m -Xmx500m
+
+  # piveau-consus-importing-ckan:
+  #   image: registry.gitlab.com/piveau/consus/piveau-consus-importing-ckan
+  #   ports:
+  #     - 18081:8080
+  #   logging:
+  #     options:
+  #       max-size: "50m"
+  #   environment:
+  #     - JAVA_OPTS=-Xms100m -Xmx200m
+
+  piveau-importing-oaipmh:
+    image: piveau/piveau-importing-oaipmh
+    ports:
+      - 8990:8080
+    logging:
+      options:
+        max-size: "100m"
+    environment:
+      - JAVA_OPTS=-Xms100m -Xmx1g
+
+  piveau-consus-transforming-js:
+    image: registry.gitlab.com/piveau/consus/piveau-consus-transforming-js
+    logging:
+      options:
+        max-size: "100m"
+    environment:
+      - JAVA_OPTS=-Xms200m -Xmx500m
+    volumes:
+      - ./scripts:/usr/verticles/scripts
+
+  piveau-consus-exporting-hub:
+    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub
+    logging:
+      options:
+        max-size: "100m"
+    environment:
+      - JAVA_OPTS=-Xms200m -Xmx2g
+      - PIVEAU_HUB_APIKEY=yourRepoApiKey
+  piveau-consus-scheduling:
+    image: registry.gitlab.com/piveau/consus/piveau-consus-scheduling
+    logging:
+      options:
+        max-size: "100m"
+    ports:
+      - '8090:8080'
+      - '8095:8085'
+      - '5001:5000'
+    environment:
+      - JAVA_OPTS=-Xms100m -Xmx1g
+      - PIVEAU_SHELL_CONFIG={"telnet":{},"http":{}}
+    volumes:
+      - ./pipes:/usr/verticles/pipes

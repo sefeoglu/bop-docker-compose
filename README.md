@@ -4,4 +4,4 @@ BOP project docker compose
   
   - TU Berlin
   ````
-  curl -i -X PUT -H "X-API-Key: yourRepoApiKey" -H "Content-Type: text/turtle" --data @bua-tuberlin.ttl localhost:8082/catalogues/bua-tuberlin ````
+  curl -i -X PUT -H "X-API-Key: yourRepoApiKey" -H "Content-Type: text/turtle" --data @bop-tuberlin.ttl localhost:8082/catalogues/bop-tuberlin ````

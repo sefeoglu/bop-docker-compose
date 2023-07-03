@@ -1,7 +1,7 @@
 header:
   id: f0baa4d5-1099-4c37-b4ca-563b8c683985
-  name: bua-huberlin
-  title: Harvester - BUA HU Berlin
+  name: bop-huberlin
+  title: Harvester - BOP HU Berlin
   version: "2.0.0"
   transport: payload
 body:
@@ -14,7 +14,7 @@ body:
       body:
         config:
           address: https://edoc.hu-berlin.de/oai/request/
-          catalogue: bua-huberlin
+          catalogue: bop-huberlin
           queries:
             metadataPrefix: oai_dc
     - header:

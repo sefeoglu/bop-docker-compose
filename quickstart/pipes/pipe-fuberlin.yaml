@@ -1,7 +1,7 @@
 header:
   id: f0baa4d5-1099-4c37-b4ca-563b8c683985
-  name: bua-fuberlin
-  title: Harvester - BUA FU Berlin
+  name: bop-fuberlin
+  title: Harvester - BOP FU Berlin
   version: "2.0.0"
   transport: payload
 body:
@@ -14,7 +14,7 @@ body:
       body:
         config:
           address: https://refubium.fu-berlin.de/oai/dnb
-          catalogue: bua-fuberlin
+          catalogue: bop-fuberlin
           queries:
             metadataPrefix: oai_dc
     - header:

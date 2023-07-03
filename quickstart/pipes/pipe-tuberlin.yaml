@@ -1,7 +1,7 @@
 header:
   id: f0baa4d5-1099-4c37-b4ca-563b8c683985
-  name: bua-tuberlin
-  title: Harvester - BUA TU Berlin
+  name: bop-tuberlin
+  title: Harvester - BOP TU Berlin
   version: "2.0.0"
   transport: payload
 body:
@@ -14,7 +14,7 @@ body:
       body:
         config:
           address: https://api-depositonce.tu-berlin.de/server/oai/request
-          catalogue: bua-tuberlin
+          catalogue: bop-tuberlin
           queries:
             metadataPrefix: oai_dc
     - header:

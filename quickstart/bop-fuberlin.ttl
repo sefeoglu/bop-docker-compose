@@ -2,9 +2,9 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
  
-<http://piveau.io/id/catalogue/bua-fubelin>
+<http://piveau.io/id/catalogue/bop-fubelin>
   a dcat:Catalog ;
   dct:language <http://publications.europa.eu/resource/authority/language/ENG> ;
   dct:title "FU Berlin Refubium"@en ;
-  dct:description "bua-fuberlin"@en ;
+  dct:description "bop-fuberlin"@en ;
   dct:type "oaipmh"^^xsd:string .

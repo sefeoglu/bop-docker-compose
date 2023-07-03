@@ -2,9 +2,9 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
  
-<http://piveau.io/id/catalogue/bua-tuberlin>
+<http://piveau.io/id/catalogue/bop-tuberlin>
   a dcat:Catalog ;
   dct:language <http://publications.europa.eu/resource/authority/language/ENG> ;
   dct:title "TU Berlin Depositonce"@en ;
-  dct:description "bua-tuberlin"@en ;
+  dct:description "bop-tuberlin"@en ;
   dct:type "oaipmh"^^xsd:string .

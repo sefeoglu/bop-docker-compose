@@ -7,13 +7,13 @@ header:
 body:
   segments:
     - header:
-        name: piveau-importing-oaipmh
+        name: piveau-consus-importing-rdf
         segmentNumber: 1
         title: Importing OAI-PMH
         processed: false
       body:
         config:
-          address: 
+          address: https://drive.google.com/uc?export=download&id=1IN9mx9GYZzEtEmyY6MNqR0ab48kilOIb
           catalogue: bop-fuberlin
           queries:
             metadataPrefix: oai_dc

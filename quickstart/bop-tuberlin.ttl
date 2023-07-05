@@ -7,4 +7,4 @@
   dct:language <http://publications.europa.eu/resource/authority/language/ENG> ;
   dct:title "TU Berlin Depositonce"@en ;
   dct:description "bop-tuberlin"@en ;
-  dct:type "oaipmh"^^xsd:string .
+  dct:type "dcat-ap"^^xsd:string .

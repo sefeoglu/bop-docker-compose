@@ -7,4 +7,4 @@
   dct:language <http://publications.europa.eu/resource/authority/language/ENG> ;
   dct:title "HU Berlin EDOC"@en ;
   dct:description "bop-huberlin"@en ;
-  dct:type "oaipmh"^^xsd:string .
+  dct:type "dcat-ap"^^xsd:string .

@@ -1,5 +1,5 @@
 header:
-  id: f0baa4d5-1099-4c37-b4ca-563b8c683985
+  id: f0baa4d5-1099-4c37-b4ca-563b8c683987
   name: bop-huberlin
   title: Harvester - BOP HU Berlin
   version: "2.0.0"
@@ -7,16 +7,15 @@ header:
 body:
   segments:
     - header:
-        name: piveau-importing-oaipmh
+        name: piveau-consus-importing-rdf
         segmentNumber: 1
-        title: Importing OAI-PMH
+        title: Importing RDF
         processed: false
       body:
         config:
-          address: https://edoc.hu-berlin.de/oai/request/
+          address: https://drive.google.com/uc?export=download&id=1a_7GNPbgsVK2_eSAU-UOWcJNwSlihM-l
           catalogue: bop-huberlin
-          queries:
-            metadataPrefix: oai_dc
+          preProcessing: true
     - header:
         name: piveau-consus-exporting-hub
         segmentNumber: 2

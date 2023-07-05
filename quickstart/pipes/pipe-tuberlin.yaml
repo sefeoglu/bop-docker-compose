@@ -1,26 +1,25 @@
 header:
-  id: f0baa4d5-1099-4c37-b4ca-563b8c683985
+  id: a6813dbb-c48e-4d43-923b-813c7c6ecb72
   name: bop-tuberlin
-  title: Harvester - BOP TU Berlin
-  version: "2.0.0"
+  title: Harvesting - bua-tuberlin
+  context: piveau
   transport: payload
+  version: "2.0.0"
 body:
   segments:
     - header:
-        name: piveau-importing-oaipmh
+        name: piveau-consus-importing-rdf
         segmentNumber: 1
-        title: Importing OAI-PMH
+        title: Importing RDF
         processed: false
       body:
         config:
-          address: https://api-depositonce.tu-berlin.de/server/oai/request
+          address: https://drive.google.com/uc?export=download&id=13icNrPDz_ehvMxoDkpFBsft1EHFM_PFp
           catalogue: bop-tuberlin
-          queries:
-            metadataPrefix: oai_dc
+          preProcessing: true
     - header:
         name: piveau-consus-exporting-hub
         segmentNumber: 2
         title: Exporting hub
         processed: false
       body: {}
- 

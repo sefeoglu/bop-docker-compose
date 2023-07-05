@@ -13,7 +13,7 @@ body:
         processed: false
       body:
         config:
-          address: https://refubium.fu-berlin.de/oai/dnb
+          address: 
           catalogue: bop-fuberlin
           queries:
             metadataPrefix: oai_dc

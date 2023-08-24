@@ -1,7 +1,7 @@
 header:
   id: a6813dbb-c48e-4d43-923b-813c7c6ecb72
   name: bop-tuberlin
-  title: Harvesting - bua-tuberlin
+  title: Harvesting - BOP TU Berlin
   context: piveau
   transport: payload
   version: "2.0.0"
@@ -14,7 +14,7 @@ body:
         processed: false
       body:
         config:
-          address: https://drive.google.com/uc?export=download&id=13icNrPDz_ehvMxoDkpFBsft1EHFM_PFp
+          address: https://drive.google.com/uc?export=download&id=1BiDUQ6wKluJJPZSiar4jTkIL7ln3PUJY
           catalogue: bop-tuberlin
           preProcessing: true
     - header:

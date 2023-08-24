@@ -13,7 +13,7 @@ body:
         processed: false
       body:
         config:
-          address: https://drive.google.com/uc?export=download&id=1a_7GNPbgsVK2_eSAU-UOWcJNwSlihM-l
+          address: https://drive.google.com/uc?export=download&id=1mxHUrMFNL3IJb5MAq5dFAJZYfwgdilF3
           catalogue: bop-huberlin
           preProcessing: true
     - header:

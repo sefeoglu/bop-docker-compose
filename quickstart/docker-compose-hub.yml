@@ -36,9 +36,9 @@ services:
       - PIVEAU_HUB_SEARCH_GAZETTEER_CONFIG={"url":"http://doesnotmatter.eu"}
       - JAVA_OPTS=-Xms1g -Xmx2g
 
-  piveau-hub-ui:
-    image: registry.gitlab.com/piveau/hub/piveau-hub-ui
-    container_name: piveau-hub-ui
+  bua-bop-ui:
+    image: bua-bop-ui
+    container_name: bua-bop-ui
     logging:
       options:
         max-size: "50m"

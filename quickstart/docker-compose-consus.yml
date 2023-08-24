@@ -2,42 +2,23 @@ version: '3'
 
 services:
   piveau-consus-importing-rdf:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-importing-rdf
-    logging:
-      options:
-        max-size: "50m"
-    environment:
-      - JAVA_OPTS=-Xms200m -Xmx500m
-
-  # piveau-consus-importing-ckan:
-  #   image: registry.gitlab.com/piveau/consus/piveau-consus-importing-ckan
-  #   logging:
-  #     options:
-  #       max-size: "50m"
-  #   environment:
-  #     - JAVA_OPTS=-Xms100m -Xmx200m
-
-  # piveau-consus-transforming-js:
-  #   image: registry.gitlab.com/piveau/consus/piveau-consus-transforming-js
-  #   logging:
-  #     options:
-  #       max-size: "50m"
-  #   environment:
-  #     - JAVA_OPTS=-Xms200m -Xmx500m
-  #   volumes:
-  #     - ./scripts:/usr/verticles/scripts
-
-  piveau-consus-exporting-hub:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub
+    image: piveau/piveau-importing-rdf
     logging:
       options:
         max-size: "50m"
     environment:
       - JAVA_OPTS=-Xms200m -Xmx1g
+  piveau-consus-exporting-hub:
+    image: piveau/piveau-consus-exporting-hub
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms200m -Xmx2g
       - PIVEAU_HUB_APIKEY=yourRepoApiKey
-
+      
   piveau-consus-scheduling:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-scheduling
+    image: piveau/piveau-consus-scheduling
     logging:
       options:
         max-size: "50m"

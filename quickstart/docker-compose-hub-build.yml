@@ -32,8 +32,8 @@ services:
       - PIVEAU_HUB_SEARCH_GAZETTEER_CONFIG={"url":"http://doesnotmatter.eu"}
       - JAVA_OPTS=-Xms300m -Xmx1g
 
-  piveau-hub-ui:
-    build: piveau-hub-ui
+  bua-bop-ui:
+    build: bua-bop-ui
     logging:
       options:
         max-size: "50m"

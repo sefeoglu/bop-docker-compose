@@ -1,13 +1,15 @@
 version: '3'
 
 services:
-  piveau-consus-importing-rdf:
-    image: piveau/piveau-importing-rdf
+  bop-consus-importing-rdf:
+    image: bop/bop-importing-rdf
     logging:
       options:
         max-size: "50m"
     environment:
       - JAVA_OPTS=-Xms200m -Xmx1g
+    volumes:
+      - ./data:/usr/verticles/data/
   piveau-consus-exporting-hub:
     image: piveau/piveau-consus-exporting-hub
     logging:

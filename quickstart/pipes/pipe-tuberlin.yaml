@@ -8,13 +8,13 @@ header:
 body:
   segments:
     - header:
-        name: piveau-consus-importing-rdf
+        name: bop-consus-importing-rdf
         segmentNumber: 1
         title: Importing RDF
         processed: false
       body:
         config:
-          address: https://drive.google.com/uc?export=download&id=1BiDUQ6wKluJJPZSiar4jTkIL7ln3PUJY
+          address:  /usr/verticles/data/sample.rdf
           catalogue: bop-tuberlin
           preProcessing: true
     - header:

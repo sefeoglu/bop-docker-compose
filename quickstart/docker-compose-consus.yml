@@ -11,7 +11,7 @@ services:
     volumes:
       - ./data:/usr/verticles/data/
   piveau-consus-exporting-hub:
-    image: piveau/piveau-consus-exporting-hub
+    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub
     logging:
       options:
         max-size: "50m"
@@ -20,7 +20,7 @@ services:
       - PIVEAU_HUB_APIKEY=yourRepoApiKey
       
   piveau-consus-scheduling:
-    image: piveau/piveau-consus-scheduling
+    image: registry.gitlab.com/piveau/consus/piveau-consus-scheduling
     logging:
       options:
         max-size: "50m"
